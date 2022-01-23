@@ -5,6 +5,8 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // questions prompt
 const questions = () => {
+    // TODO: add data validation and defaults
+    // TODO: reword questions to be more helpful!
     return inquirer
         .prompt([
         {
