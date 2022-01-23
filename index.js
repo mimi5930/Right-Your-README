@@ -86,8 +86,7 @@ const initialQuestions = () => {
             type: 'list',
             name: 'liscense',
             message: 'Which liscense would you like to use?',
-            choices: ['a', 'b', 'c', 'd']
-            // TODO: change choices
+            choices: ['MIT Liscence', 'GNU GPLv3', 'Apache License 2.0', 'ISC License']
         },
         {
             type: 'confirm',
