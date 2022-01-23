@@ -18,8 +18,32 @@ const questions = () => {
             // TODO: add function to correctly capitalize this
         },
         {
-
+            type: 'input',
+            name: 'description',
+            message: 'Please add a description for your project.'
+        },
+        {
+            type: 'input',
+            name: 'install',
+            message: 'Provide the user with installation instructions.'
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'How will one use your project?'
+        },
+        {
+            type: 'input',
+            name: 'contribution',
+            message:'contribution guidelines'
+            // !change wording in message
+        },
+        {
+            type: 'input',
+            name: 'instructions',
+            message: 'How will the user test your project'
         }
+
         // add description, installation instructions, usage information, contribution guidelines, and test instructions
         // add liscense from a list of options
     ])
