@@ -42,7 +42,6 @@ var generateTable = (install, usage, credits) => {
     tableArr.push('Credits');
   }
   tableArr.push('Liscense');
-  console.log(tableArr);
 
   let length = tableArr.length;
   var tableString = '';
