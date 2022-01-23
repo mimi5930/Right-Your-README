@@ -127,6 +127,7 @@ Please answer the following questions fully to create a glowing README of your o
 init();
 initialQuestions()
 .then(data => {
+    console.log(data);
     return markdownContent(data);
 })
 .then(markdownContent => {
