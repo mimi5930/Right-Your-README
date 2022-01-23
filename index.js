@@ -3,8 +3,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// questions prompt
-const questions = () => {
+// initial questions prompt
+const initialQuestions = () => {
     // TODO: add data validation and defaults
     // TODO: reword questions to be more helpful!
     return inquirer
@@ -38,7 +38,7 @@ const questions = () => {
         {
             type: 'input',
             name: 'install',
-            message: 'Provide the user with installation instructions.'
+            message: 'Give the user a list of instructions to install your project. (Separate steps with a "/")'
         },
         {
             type: 'input',
@@ -47,14 +47,8 @@ const questions = () => {
         },
         {
             type: 'input',
-            name: 'contribution',
-            message:'contribution guidelines'
-            // TODO: change wording in message
-        },
-        {
-            type: 'input',
             name: 'instructions',
-            message: 'How will the user test your project'
+            message: 'How will the user test your project? (Separate steps with a "/")'
         },
         {
             type: 'list',
@@ -62,6 +56,11 @@ const questions = () => {
             message: 'Which liscense would you like to use?',
             choices: ['a', 'b', 'c', 'd']
             // TODO: change choices
+        },
+        {
+            type: 'confirm',
+            name: 'collabConfirm',
+            message: 'Were there any other contributers to this project?'
         }
     ])
     .then(answers => console.log(answers));
@@ -82,4 +81,4 @@ Please answer the following questions fully to create a glowing README of your o
 
 // Function call to initialize app
 init();
-questions();
+initialQuestions();
