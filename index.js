@@ -9,6 +9,11 @@ const questions = () => {
         .prompt([
         {
             type: 'input',
+            name: 'email',
+            message: 'What is your email?'
+        },
+        {
+            type: 'input',
             name: 'gitName',
             message: 'What is your GitHub Username?'
         },
