@@ -43,12 +43,7 @@ const initialQuestions = () => {
         {
             type: 'input',
             name: 'usage',
-            message: 'How will one use your project?'
-        },
-        {
-            type: 'input',
-            name: 'instructions',
-            message: 'How will the user test your project? (Separate steps with a "/")'
+            message: 'Instruct the user on how to use your product.'
         },
         {
             type: 'list',
@@ -61,6 +56,18 @@ const initialQuestions = () => {
             type: 'confirm',
             name: 'collabConfirm',
             message: 'Were there any other contributers to this project?'
+        },
+        // if collabConfirm is true
+        {
+            type: 'input',
+            name: 'collab',
+            message: `Enter the contributers' GitHub username. (If more than one, separate with a "/")`,
+            when: ({ collabConfirm }) => collabConfirm
+        },
+        {
+            type: 'input',
+            name: 'instructions',
+            message: 'How will the user test your project? (Separate steps with a "/")'
         }
     ])
     .then(answers => console.log(answers));
