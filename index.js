@@ -8,12 +8,20 @@ const questions = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'title',
-            message: 'What is the title of your project?'
+            name: 'gitName',
+            message: 'What is your GitHub Username?'
         },
         {
-            
+            type: 'input',
+            name: 'title',
+            message: 'What is the title of your project?'
+            // TODO: add function to correctly capitalize this
+        },
+        {
+
         }
+        // add description, installation instructions, usage information, contribution guidelines, and test instructions
+        // add liscense from a list of options
     ])
     .then(answers => console.log(answers));
 };
@@ -21,7 +29,6 @@ const questions = () => {
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
 function init() {
     console.log(`
 ====================================================================================
