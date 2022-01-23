@@ -5,11 +5,17 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = () => {
-    return inquirer.prompt([
+    return inquirer
+        .prompt([
         {
             type: 'input',
             name: 'gitName',
             message: 'What is your GitHub Username?'
+        },
+        {
+            type: 'input',
+            name: 'link',
+            message: 'What is the link to your project on GitHub?'
         },
         {
             type: 'input',
@@ -36,15 +42,21 @@ const questions = () => {
             type: 'input',
             name: 'contribution',
             message:'contribution guidelines'
-            // !change wording in message
+            // TODO: change wording in message
         },
         {
             type: 'input',
             name: 'instructions',
             message: 'How will the user test your project'
+        },
+        {
+            type: 'list',
+            name: 'liscense',
+            message: 'Which liscense would you like to use?',
+            choices: ['a', 'b', 'c', 'd']
+            // TODO: change choices
         }
 
-        // add description, installation instructions, usage information, contribution guidelines, and test instructions
         // add liscense from a list of options
     ])
     .then(answers => console.log(answers));
