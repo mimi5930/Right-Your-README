@@ -1,7 +1,7 @@
 // packages
 const inquirer = require('inquirer');
-const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const createMarkdown = require('./utils/generateMarkdown');
+const markdownContent = require('./src/markdownTemplate');
 
 // initial questions prompt
 const initialQuestions = () => {
@@ -127,5 +127,8 @@ Please answer the following questions fully to create a glowing README of your o
 init();
 initialQuestions()
 .then(data => {
-    generateMarkdown(data);
+    return markdownContent(data);
+})
+.then(markdownContent => {
+    return createMarkdown(markdownContent);
 });
