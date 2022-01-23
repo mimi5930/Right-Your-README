@@ -8,17 +8,30 @@ const questions = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'name',
-            message: 'What is your name?'
+            name: 'title',
+            message: 'What is the title of your project?'
+        },
+        {
+            
         }
     ])
+    .then(answers => console.log(answers));
 };
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    console.log(`
+====================================================================================
+Welcome to Write Your README!
+A README is the gateway into the soul of your project.
+Please answer the following questions fully to create a glowing README of your own!
+====================================================================================
+    `);
+}
 
 // Function call to initialize app
 init();
+questions();
