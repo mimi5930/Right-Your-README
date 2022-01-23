@@ -5,8 +5,6 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // initial questions prompt
 const initialQuestions = () => {
-    // TODO: add data validation and defaults
-    // TODO: reword questions to be more helpful!
     return inquirer
         .prompt([
         {
@@ -94,12 +92,17 @@ const initialQuestions = () => {
             message: 'Were there any other contributers to this project?',
             default: false
         },
-        // if collabConfirm is true
         {
+            // if collabConfirm is true
             type: 'input',
             name: 'collab',
             message: `Enter the contributers' GitHub username. (If more than one, separate with a "/")`,
             when: ({ collabConfirm }) => collabConfirm
+        },
+        {
+            type: 'input',
+            name: 'sources',
+            message: `Enter any other contributor's name and website or any tutorials (separate with a "/")`
         },
         {
             type: 'input',
