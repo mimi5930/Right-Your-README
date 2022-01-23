@@ -110,12 +110,9 @@ const initialQuestions = () => {
             message: 'How will the user test your project? (Separate steps with a "/")'
         }
     ])
-    .then(answers => console.log(answers));
 };
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+// function for welcome text
 function init() {
     console.log(`
 ====================================================================================
@@ -128,4 +125,7 @@ Please answer the following questions fully to create a glowing README of your o
 
 // Function call to initialize app
 init();
-initialQuestions();
+initialQuestions()
+.then(data => {
+    generateMarkdown(data);
+});
