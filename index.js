@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// packages
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+// questions prompt
 const questions = () => {
     return inquirer
         .prompt([
@@ -61,8 +61,6 @@ const questions = () => {
             choices: ['a', 'b', 'c', 'd']
             // TODO: change choices
         }
-
-        // add liscense from a list of options
     ])
     .then(answers => console.log(answers));
 };
