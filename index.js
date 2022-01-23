@@ -12,28 +12,65 @@ const initialQuestions = () => {
         {
             type: 'input',
             name: 'email',
-            message: 'What is your email?'
+            message: 'What is your email?*',
+            validate: emailInput => {
+                if (emailInput) {
+                  return true;
+                } else {
+                  console.log('Please enter your email!');
+                  return false;
+                }
+              }
         },
         {
             type: 'input',
             name: 'gitName',
-            message: 'What is your GitHub Username?'
+            message: 'What is your GitHub username?*',
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter your GitHub username!');
+                  return false;
+                }
+              }
         },
         {
             type: 'input',
             name: 'link',
-            message: 'What is the link to your project on GitHub?'
+            message: 'What is the link to your project on GitHub?*',
+            validate: linkInput => {
+                if (linkInput) {
+                    return true
+                } else {
+                    console.log('Please include the link to your project on GitHub!');
+                }
+            }
         },
         {
             type: 'input',
             name: 'title',
-            message: 'What is the title of your project?'
+            message: 'What is the title of your project?*',
             // TODO: add function to correctly capitalize this
+            validate: titleInput => {
+                if (titleInput) {
+                    return true
+                } else {
+                    console.log('Please add a title for your project!');
+                }
+            }
         },
         {
             type: 'input',
             name: 'description',
-            message: 'Please add a description for your project.'
+            message: 'Please add a description for your project.*',
+            validate: descInput => {
+                if (descInput) {
+                    return true
+                } else {
+                    console.log('Please describe your project!');
+                }
+            }
         },
         {
             type: 'input',
@@ -55,7 +92,8 @@ const initialQuestions = () => {
         {
             type: 'confirm',
             name: 'collabConfirm',
-            message: 'Were there any other contributers to this project?'
+            message: 'Were there any other contributers to this project?',
+            default: false
         },
         // if collabConfirm is true
         {
