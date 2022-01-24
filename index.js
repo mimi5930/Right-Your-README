@@ -89,7 +89,7 @@ const initialQuestions = () => {
         {
             type: 'confirm',
             name: 'collabConfirm',
-            message: 'Were there any other contributers to this project?',
+            message: 'Were there any other contributers to this project? (If more than one, separate with a "*")',
             default: false
         },
         {
@@ -100,7 +100,6 @@ const initialQuestions = () => {
             when: ({ collabConfirm }) => collabConfirm
         },
         {
-            // TODO: Add this to the the credits section
             type: 'input',
             name: 'sources',
             message: `Enter any other contributor's name and website or any tutorials (separate with a "*")`,
@@ -110,8 +109,40 @@ const initialQuestions = () => {
             type: 'input',
             name: 'instructions',
             message: 'How will the user test your project? (Separate steps with a "*")'
-        }
+        },
         // TODO: Add contributing section
+        {
+            type: 'confirm',
+            name: 'confirmContributing',
+            message: 'Would you like to add a section for contributing?',
+            default: false
+        },
+        {
+            type: 'confirm',
+            name: 'contributeOptions',
+            message: 'Would you like to use the Contributor Covenant?',
+            when: ({ confirmContributing }) => confirmContributing,
+            default: true
+        },
+        {
+            type: 'input',
+            name: 'customContribute',
+            message: 'Please write your message for contributing to this project! (Separate steps with a "*")',
+            when: ({ confirmContributing, contributeOptions }) => {
+                if (!confirmContributing || !contributeOptions) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
+            validate: titleInput => {
+                if (titleInput) {
+                    return true
+                } else {
+                    console.log('Please add a message for contributing to your project!');
+                }
+            }
+        }
         // TODO: Add Tests Section
         // TODO: Add Questions Section
     ])

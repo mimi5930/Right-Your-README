@@ -63,7 +63,7 @@ const additionalSources = data => {
     if (sources.includes('*')) {
       sources = listMaker(sources)
     }
-    return sources;
+    return `### Additional Sources\n${sources}`;
   }
   else {
     return '';
@@ -89,10 +89,28 @@ function renderLicenseBadge(license) {}
 // If there is no license, return an empty string
 function renderLicenseLink(license) {}
 
+const contributingSection = data => {
+  let { confirmContributing, contributeOptions, customContribute } = data;
+  if (confirmContributing) {
+    if (contributeOptions) {
+      return `## Contributing\n- [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)`;
+    }
+    else {
+      if (customContribute.includes('*')) {
+        customContribute = listMaker(customContribute);
+      }
+      return `## Contributing\n${customContribute}`;
+    }
+  }
+}
+
+// TODO: Add Tests
+
+// TODO: Add Questions
 
 var generateTable = (data) => {
   let tableArr = [];
-  let { install, usage, credits, license } = data;
+  let { install, usage, credits, license, confirmContributing } = data;
 
   if (install) {
     tableArr.push('Installation');
@@ -106,6 +124,11 @@ var generateTable = (data) => {
   if (license) {
     tableArr.push('License');
   }
+  if (confirmContributing) {
+    tableArr.push('Contributing')
+  }
+  // TODO: Add Tests
+  // TODO: Add Questions
 
   let length = tableArr.length;
   var tableString = '';
@@ -142,6 +165,8 @@ ${creditsSection(data)}
 ${additionalSources(data)}
 
 ${licenseSection(data)}
+
+${contributingSection(data)}
 
 `;
 };
