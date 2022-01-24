@@ -1,20 +1,16 @@
 const listMaker = (string) => {
-  let hasListMarker = string.includes('/');
-  if (!hasListMarker) {
-    return string;
-  }
-  let text = string;
-  var textArr = text.split('/');
-  let arrLength = textArr.length;
-  var list = '';
-  for (i = 0; i < arrLength; i++) {
-    let stepText = textArr[i].trim()
-    let newLine = '\n';
-    let bullet = '- ';
-    stepText = bullet + stepText + newLine;
-    list = list += stepText;
-  }
-  return list;
+    let text = string;
+    var textArr = text.split('/');
+    let arrLength = textArr.length;
+    var list = '';
+    for (i = 0; i < arrLength; i++) {
+      let stepText = textArr[i].trim()
+      let newLine = '\n';
+      let bullet = '- ';
+      stepText = bullet + stepText + newLine;
+      list = list += stepText;
+    }
+    return list;
 }
 
 const capitalizeFirst = (string) => {
@@ -22,37 +18,53 @@ const capitalizeFirst = (string) => {
 }
 
 const installSection = data => {
-  let { install } = data;
+  var { install } = data;
   if (install) {
-    let installList = listMaker(install);
-    return `## Installation\n${installList}`;
+    if (install.includes('/')) {
+      install = listMaker(install);
+    }
+    return `## Installation\n${install}`;
+  }
+  else {
+    return '';
   }
 };
 
 const usageSection = data => {
-  let { usage } = data;
+  var { usage } = data;
   if (usage) {
-    let usageList = listMaker(usage);
-    return`## Usage\n${usageList}`;
+    if (usage.includes('/')) {
+      usage = listMaker(usage);
+    }
+    return`## Usage\n${usage}`;
+  }
+  else {
+    return '';
   }
 };
 
 const creditsSection = data => {
   let { collab } = data;
   if (collab) {
-    let collabList = listMaker(collab);
-    return `## Credits\n${collabList}`;
+    if (collab.includes('/')) {
+      collab = listMaker(collab);
+    }
+    return `## Credits\n${collab}`;
+  }
+  else {
+    return '';
   }
 };
 
 // If there is no license, return an empty string
 const licenseSection = data => {
   let { license } = data;
-  if (license)
+  if (license) {
     if(license === 'none') {
-      return;
+      return '';
     }
    return `## License\nLicensed under the ${license}.`
+  }
 }
 
 // TODO: Create a function that returns a license badge based on which license is passed in

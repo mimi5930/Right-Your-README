@@ -81,6 +81,7 @@ const initialQuestions = () => {
             message: 'Instruct the user on how to use your product.'
         },
         {
+            // TODO: Add badges
             type: 'list',
             name: 'license',
             message: 'Which license would you like to use?',
@@ -100,6 +101,7 @@ const initialQuestions = () => {
             when: ({ collabConfirm }) => collabConfirm
         },
         {
+            // TODO: Add this to the the credits section
             type: 'input',
             name: 'sources',
             message: `Enter any other contributor's name and website or any tutorials (separate with a "/")`,
@@ -110,6 +112,9 @@ const initialQuestions = () => {
             name: 'instructions',
             message: 'How will the user test your project? (Separate steps with a "/")'
         }
+        // TODO: Add contributing section
+        // TODO: Add Tests Section
+        // TODO: Add Questions Section
     ])
 };
 
