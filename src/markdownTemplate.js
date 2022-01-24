@@ -1,6 +1,6 @@
 const listMaker = (string) => {
     let text = string;
-    var textArr = text.split('/');
+    var textArr = text.split('*');
     let arrLength = textArr.length;
     var list = '';
     for (i = 0; i < arrLength; i++) {
@@ -20,7 +20,7 @@ const capitalizeFirst = (string) => {
 const installSection = data => {
   var { install } = data;
   if (install) {
-    if (install.includes('/')) {
+    if (install.includes('*')) {
       install = listMaker(install);
     }
     return `## Installation\n${install}`;
@@ -33,7 +33,7 @@ const installSection = data => {
 const usageSection = data => {
   var { usage } = data;
   if (usage) {
-    if (usage.includes('/')) {
+    if (usage.includes('*')) {
       usage = listMaker(usage);
     }
     return`## Usage\n${usage}`;
@@ -43,18 +43,32 @@ const usageSection = data => {
   }
 };
 
+// TODO: Add github User links with input data
 const creditsSection = data => {
   let { collab } = data;
   if (collab) {
-    if (collab.includes('/')) {
+    if (collab.includes('*')) {
       collab = listMaker(collab);
     }
-    return `## Credits\n${collab}`;
+    return `## Credits\n${collab}\n`;
   }
   else {
     return '';
   }
 };
+
+const additionalSources = data => {
+  let { sources } = data;
+  if (sources) {
+    if (sources.includes('*')) {
+      sources = listMaker(sources)
+    }
+    return sources;
+  }
+  else {
+    return '';
+  }
+}
 
 // If there is no license, return an empty string
 const licenseSection = data => {
@@ -125,6 +139,7 @@ ${installSection(data)}
 ${usageSection(data)}
 
 ${creditsSection(data)}
+${additionalSources(data)}
 
 ${licenseSection(data)}
 

@@ -49,7 +49,6 @@ const initialQuestions = () => {
             type: 'input',
             name: 'title',
             message: 'What is the title of your project?*',
-            // TODO: add function to correctly capitalize this
             validate: titleInput => {
                 if (titleInput) {
                     return true
@@ -73,7 +72,7 @@ const initialQuestions = () => {
         {
             type: 'input',
             name: 'install',
-            message: 'Give the user a list of instructions to install your project. (Separate steps with a "/")'
+            message: 'Give the user a list of instructions to install your project. (Separate steps with a "*")'
         },
         {
             type: 'input',
@@ -97,20 +96,20 @@ const initialQuestions = () => {
             // if collabConfirm is true
             type: 'input',
             name: 'collab',
-            message: `Enter the contributers' GitHub username. (If more than one, separate with a "/")`,
+            message: `Enter the contributers' GitHub username. (If more than one, separate with a "*")`,
             when: ({ collabConfirm }) => collabConfirm
         },
         {
             // TODO: Add this to the the credits section
             type: 'input',
             name: 'sources',
-            message: `Enter any other contributor's name and website or any tutorials (separate with a "/")`,
+            message: `Enter any other contributor's name and website or any tutorials (separate with a "*")`,
             when: ({ collabConfirm }) => collabConfirm
         },
         {
             type: 'input',
             name: 'instructions',
-            message: 'How will the user test your project? (Separate steps with a "/")'
+            message: 'How will the user test your project? (Separate steps with a "*")'
         }
         // TODO: Add contributing section
         // TODO: Add Tests Section

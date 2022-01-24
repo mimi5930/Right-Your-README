@@ -1,25 +1,23 @@
 
-# Asd
+# Asdf
 
 ## Descritption
-fasdf
+asdf
 
 ## Table of Contents
-* [Installation](#installation)
-* [Usage](#usage)
 * [License](#license)
 
 
-## Installation
-- 1
-- 2
-- 3
-- 4
 
 
-## Usage
-hello
 
+
+## Credits
+- mickey
+- joe
+
+- aaron
+- marie
 
 
 ## License
