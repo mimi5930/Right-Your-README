@@ -17,6 +17,9 @@ const listMaker = (string) => {
   return list;
 }
 
+const capitalizeFirst = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 const installSection = data => {
   let { install } = data;
@@ -46,7 +49,10 @@ const creditsSection = data => {
 const licenseSection = data => {
   let { license } = data;
   if (license)
-    return `## License\nLicensed under the ${license}.`
+    if(license === 'none') {
+      return;
+    }
+   return `## License\nLicensed under the ${license}.`
 }
 
 // TODO: Create a function that returns a license badge based on which license is passed in
@@ -91,8 +97,10 @@ var generateTable = (data) => {
 
 // generates markdown Content with data
 var markdownContent = data => {
+let title = capitalizeFirst(data.title);
+
 return `
-# ${data.title}
+# ${title}
 
 ## Descritption
 ${data.description}
