@@ -1,21 +1,53 @@
-const validateHeaders = (headers) => {
-  const { install, usage } = headers;
-  hasInstall = true;
-  hasUsage = true;
-  hasCredits = true;
-
-  if (install === '') {
-    var hasInstall = false;
+const listMaker = (string) => {
+  let hasListMarker = string.includes('/');
+  if (!hasListMarker) {
+    return string;
   }
-  if (usage === '') {
-    var hasUsage = false;
+  let text = string;
+  var textArr = text.split('/');
+  let arrLength = textArr.length;
+  var list = '';
+  for (i = 0; i < arrLength; i++) {
+    let stepText = textArr[i].trim()
+    let newLine = '\n';
+    let bullet = '- ';
+    stepText = bullet + stepText + newLine;
+    list = list += stepText;
   }
-  if (headers.collabConfirm === false) {
-    var hasCredits = false;
-  }
-  return [hasInstall, hasUsage, hasCredits];
+  return list;
 }
 
+
+const installSection = data => {
+  let { install } = data;
+  if (install) {
+    let installList = listMaker(install);
+    return `## Installation\n${installList}`;
+  }
+};
+
+const usageSection = data => {
+  let { usage } = data;
+  if (usage) {
+    let usageList = listMaker(usage);
+    return`## Usage\n${usageList}`;
+  }
+};
+
+const creditsSection = data => {
+  let { collab } = data;
+  if (collab) {
+    let collabList = listMaker(collab);
+    return `## Credits\n${collabList}`;
+  }
+};
+
+// If there is no license, return an empty string
+const licenseSection = data => {
+  let { license } = data;
+  if (license)
+    return `## License\nLicensed under the ${license}.`
+}
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
@@ -25,12 +57,10 @@ function renderLicenseBadge(license) {}
 // If there is no license, return an empty string
 function renderLicenseLink(license) {}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
 
-var generateTable = (install, usage, credits) => {
-  var tableArr = [];
+var generateTable = (data) => {
+  let tableArr = [];
+  let { install, usage, credits, license } = data;
 
   if (install) {
     tableArr.push('Installation');
@@ -41,7 +71,9 @@ var generateTable = (install, usage, credits) => {
   if (credits) {
     tableArr.push('Credits');
   }
-  tableArr.push('Liscense');
+  if (license) {
+    tableArr.push('License');
+  }
 
   let length = tableArr.length;
   var tableString = '';
@@ -52,15 +84,13 @@ var generateTable = (install, usage, credits) => {
     tableString = tableString += content;
   }
   
+  console.log(tableString);
   return tableString;
 }
 
 
 // generates markdown Content with data
 var markdownContent = data => {
-// validate existence of certain data
-[hasCredits, hasUsage, hasInstall] = validateHeaders(data);
-
 return `
 # ${data.title}
 
@@ -68,8 +98,15 @@ return `
 ${data.description}
 
 ## Table of Contents
-${generateTable(hasInstall, hasUsage, hasCredits)}
+${generateTable(data)}
 
+${installSection(data)}
+
+${usageSection(data)}
+
+${creditsSection(data)}
+
+${licenseSection(data)}
 
 `;
 };

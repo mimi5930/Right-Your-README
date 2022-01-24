@@ -2,8 +2,23 @@
 # asdf
 
 ## Descritption
-asfd
+asdf
 
 ## Table of Contents
-* [Usage](#usage)
-* [Liscense](#liscense)
+* [Installation](#installation)
+* [License](#license)
+
+
+## Installation
+- go to the store
+- find some peace and quiet
+- Cry
+
+
+undefined
+
+undefined
+
+## License
+Licensed under the MIT Licence.
+

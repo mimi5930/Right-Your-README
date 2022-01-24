@@ -82,9 +82,9 @@ const initialQuestions = () => {
         },
         {
             type: 'list',
-            name: 'liscense',
-            message: 'Which liscense would you like to use?',
-            choices: ['MIT Liscence', 'GNU GPLv3', 'Apache License 2.0', 'ISC License']
+            name: 'license',
+            message: 'Which license would you like to use?',
+            choices: ['MIT Licence', 'GNU GPLv3 License', 'Apache License 2.0', 'ISC License', 'none']
         },
         {
             type: 'confirm',
@@ -102,7 +102,8 @@ const initialQuestions = () => {
         {
             type: 'input',
             name: 'sources',
-            message: `Enter any other contributor's name and website or any tutorials (separate with a "/")`
+            message: `Enter any other contributor's name and website or any tutorials (separate with a "/")`,
+            when: ({ collabConfirm }) => collabConfirm
         },
         {
             type: 'input',
