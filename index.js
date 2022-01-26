@@ -129,10 +129,10 @@ const initialQuestions = () => {
             name: 'customContribute',
             message: 'Please write your message for contributing to this project! (Separate steps with a "*")',
             when: ({ confirmContributing, contributeOptions }) => {
-                if (!confirmContributing || !contributeOptions) {
-                    return false;
-                } else {
+                if (confirmContributing && !contributeOptions) {
                     return true;
+                } else {
+                    return false;
                 }
             },
             validate: titleInput => {
