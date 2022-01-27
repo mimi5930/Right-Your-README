@@ -107,10 +107,9 @@ const initialQuestions = () => {
         },
         {
             type: 'input',
-            name: 'instructions',
+            name: 'tests',
             message: 'How will the user test your project? (Separate steps with a "*")'
         },
-        // TODO: Add contributing section
         {
             type: 'confirm',
             name: 'confirmContributing',
@@ -143,8 +142,6 @@ const initialQuestions = () => {
                 }
             }
         }
-        // TODO: Add Tests Section
-        // TODO: Add Questions Section
     ])
 };
 

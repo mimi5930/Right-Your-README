@@ -61,7 +61,7 @@ const additionalSources = data => {
   let { sources } = data;
   if (sources) {
     if (sources.includes('*')) {
-      sources = listMaker(sources)
+      sources = listMaker(sources);
     }
     return `### Additional Sources\n${sources}`;
   }
@@ -78,6 +78,20 @@ const licenseSection = data => {
       return '';
     }
    return `## License\nLicensed under the ${license}.`
+  }
+}
+
+// Test Section
+const testSection = data => {
+  let { tests } = data;
+  if (tests) {
+    if (tests.includes('*')) {
+      tests = listMaker(tests);
+    }
+    return `## Test\n${tests}`;
+  }
+  else {
+    return '';
   }
 }
 
@@ -104,36 +118,32 @@ const contributingSection = data => {
   }
 }
 
-// TODO: Add Tests
-
 // TODO: Add Questions
 
 var generateTable = (data) => {
   let tableArr = [];
-  let { install, usage, credits, license, confirmContributing } = data;
+  let { install, usage, credits, license, confirmContributing, tests } = data;
 
-  if (install) {
-    tableArr.push('Installation');
+  const pushToArray = (dataInput, title) => {
+    if(dataInput) {
+      tableArr.push(title);
+    }
+    else {
+      return;
+    }
   }
-  if (usage) {
-    tableArr.push('Usage');
-  }
-  if (credits) {
-    tableArr.push('Credits');
-  }
-  if (license) {
-    tableArr.push('License');
-  }
-  if (confirmContributing) {
-    tableArr.push('Contributing')
-  }
-  // TODO: Add Tests
-  // TODO: Add Questions
 
-  let length = tableArr.length;
+  // validate and push different sections to the array
+  pushToArray(install, 'Installation');
+  pushToArray(usage, 'Usage');
+  pushToArray(credits, 'Credits');
+  pushToArray(license, 'License');
+  pushToArray(confirmContributing, 'Contributing');
+  pushToArray(tests, 'Tests');
+
   var tableString = '';
 
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < tableArr.length; i++) {
     let lowerCase = tableArr[i].toLowerCase();
     let content = `* [${tableArr[i]}](#${lowerCase})\n`;
     tableString = tableString += content;
@@ -167,6 +177,8 @@ ${additionalSources(data)}
 ${licenseSection(data)}
 
 ${contributingSection(data)}
+
+${testSection(data)}
 
 `;
 };
