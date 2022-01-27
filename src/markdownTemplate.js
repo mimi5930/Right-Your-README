@@ -13,9 +13,18 @@ const listMaker = (string) => {
     return list;
 }
 
-const capitalizeFirst = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+const titleSection = (data, badge) => {
+  let { title } = data;
+  
+  const capitalizeFirst = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  } 
+
+  capitalizeFirst(title);
+
+  return `# ${title}\n${badge}`;
 }
+
 
 const installSection = data => {
   var { install } = data;
@@ -96,13 +105,17 @@ const testSection = data => {
   }
 }
 
-// TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseBadge(data) {
+  let { license } = data;
+  if (license === 'none') {
+    return false;
+  }
+  let badgetitle = license.replace(' License', '');
+  var badge = `![license](https://img.shields.io/badge/license-${badgetitle}-green)`;
+  console.log(badge);
+  return badge;
+}
 
 const contributingSection = data => {
   let { confirmContributing, contributeOptions, customContribute } = data;
@@ -116,10 +129,11 @@ const contributingSection = data => {
       }
       return `## Contributing\n${customContribute}`;
     }
+  } else {
+    return '';
   }
 }
 
-// TODO: Add Questions Section
 // Questions Section
 const questionsSection = data => {
   let { email, gitName } = data;
@@ -169,11 +183,10 @@ var generateTable = (data) => {
 
 // generates markdown Content with data
 var markdownContent = data => {
-let title = capitalizeFirst(data.title);
 
 //  TODO: Refactor to get rid of empty spaces
 return `
-# ${title}
+${titleSection(data, renderLicenseBadge(data))}
 
 ## Descritption
 ${data.description}

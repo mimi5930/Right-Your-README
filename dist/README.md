@@ -1,41 +1,29 @@
 
-# Truthinator
+# asdf
+  ![license](https://img.shields.io/badge/license-MIT-green)
 
 ## Descritption
-It's exactly what it sounds lik
+adsf
 
 ## Table of Contents
-* [Installation](#installation)
-* [Usage](#usage)
 * [License](#license)
-* [Contributing](#contributing)
 * [Questions](#questions)
 
-## Installation
-- clone this repository
-- in the command line type npm install to get dependencies
 
 
-## Usage
-- type in the information
-- cry maybe?
 
-
-## Credits
-- robel-codes
-- nate
 
 
 
 
 ## License
-Licensed under the Apache License 2.0.
-
-## Contributing
-- [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
+Licensed under the MIT License.
 
 
 
 
-  To reach out with any questions, please go to my [GitHub](https://github.com/mimi5930) page or email me at mimi5930@whatever.com.
+
+
+  ## Questions
+  To reach out with any questions, please go to my [GitHub](https://github.com/sadf) page or email me at asdfas.
   
