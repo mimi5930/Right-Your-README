@@ -35,18 +35,6 @@ const initialQuestions = () => {
         },
         {
             type: 'input',
-            name: 'link',
-            message: 'What is the link to your project on GitHub?*',
-            validate: linkInput => {
-                if (linkInput) {
-                    return true
-                } else {
-                    console.log('Please include the link to your project on GitHub!');
-                }
-            }
-        },
-        {
-            type: 'input',
             name: 'title',
             message: 'What is the title of your project?*',
             validate: titleInput => {
@@ -88,22 +76,22 @@ const initialQuestions = () => {
         },
         {
             type: 'confirm',
-            name: 'collabConfirm',
-            message: 'Were there any other contributers to this project? (If more than one, separate with a "*")',
+            name: 'creditsConfirm',
+            message: 'Were there any other contributers to this project?',
             default: false
         },
         {
-            // if collabConfirm is true
+            // if creditsConfirm is true
             type: 'input',
-            name: 'collab',
+            name: 'credits',
             message: `Enter the contributers' GitHub username. (If more than one, separate with a "*")`,
-            when: ({ collabConfirm }) => collabConfirm
+            when: ({ creditsConfirm }) => creditsConfirm
         },
         {
             type: 'input',
             name: 'sources',
             message: `Enter any other contributor's name and website or any tutorials (separate with a "*")`,
-            when: ({ collabConfirm }) => collabConfirm
+            when: ({ creditsConfirm }) => creditsConfirm
         },
         {
             type: 'input',

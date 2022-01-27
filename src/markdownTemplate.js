@@ -45,12 +45,12 @@ const usageSection = data => {
 
 // TODO: Add github User links with input data
 const creditsSection = data => {
-  let { collab } = data;
-  if (collab) {
-    if (collab.includes('*')) {
-      collab = listMaker(collab);
+  let { credits } = data;
+  if (credits) {
+    if (credits.includes('*')) {
+      credits = listMaker(credits);
     }
-    return `## Credits\n${collab}\n`;
+    return `## Credits\n${credits}\n`;
   }
   else {
     return '';
@@ -71,6 +71,7 @@ const additionalSources = data => {
 }
 
 // If there is no license, return an empty string
+// TODO: add links to license;
 const licenseSection = data => {
   let { license } = data;
   if (license) {
@@ -118,7 +119,16 @@ const contributingSection = data => {
   }
 }
 
-// TODO: Add Questions
+// TODO: Add Questions Section
+// Questions Section
+const questionsSection = data => {
+  let { email, gitName } = data;
+  let content = `
+  ## Questions
+  To reach out with any questions, please go to my [GitHub](https://github.com/${gitName}) page or email me at ${email}.
+  `
+  return content;
+}
 
 var generateTable = (data) => {
   let tableArr = [];
@@ -149,7 +159,10 @@ var generateTable = (data) => {
     tableString = tableString += content;
   }
   
-  console.log(tableString);
+  // add questions section
+  let questions = '* [Questions](#questions)';
+  tableString = tableString + questions;
+
   return tableString;
 }
 
@@ -158,6 +171,7 @@ var generateTable = (data) => {
 var markdownContent = data => {
 let title = capitalizeFirst(data.title);
 
+//  TODO: Refactor to get rid of empty spaces
 return `
 # ${title}
 
@@ -180,6 +194,7 @@ ${contributingSection(data)}
 
 ${testSection(data)}
 
+${questionsSection(data)}
 `;
 };
 
