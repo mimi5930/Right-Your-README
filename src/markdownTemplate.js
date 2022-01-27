@@ -79,15 +79,32 @@ const additionalSources = data => {
   }
 }
 
-// If there is no license, return an empty string
-// TODO: add links to license;
+// add license Section
 const licenseSection = data => {
   let { license } = data;
   if (license) {
     if(license === 'none') {
       return '';
     }
-   return `## License\nLicensed under the ${license}.`
+
+    let link = '';
+
+    switch (license) {
+      case 'MIT License':
+        link = 'https://choosealicense.com/licenses/mit/';
+        break;
+      case 'GNU GPLv3 License':
+        link = 'https://choosealicense.com/licenses/gpl-3.0/';
+        break;
+      case 'Apache License 2.0':
+        link = 'https://choosealicense.com/licenses/apache-2.0/';
+        break;
+      case 'ISC License':
+        link = 'https://choosealicense.com/licenses/isc/';
+        break;
+    }
+
+   return `## License\nLicensed under the [${license}](${link}).`
   }
 }
 
@@ -113,7 +130,6 @@ function renderLicenseBadge(data) {
   }
   let badgetitle = license.replace(' License', '');
   var badge = `![license](https://img.shields.io/badge/license-${badgetitle}-green)`;
-  console.log(badge);
   return badge;
 }
 
