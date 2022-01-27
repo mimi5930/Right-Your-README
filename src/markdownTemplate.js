@@ -211,32 +211,39 @@ var generateTable = (data) => {
 
 // generates markdown Content with data
 var markdownContent = data => {
+  let { description, install, usage, credits, sources, license, tests } = data;
 
-//  TODO: Refactor to get rid of empty spaces
-return `
-${titleSection(data, renderLicenseBadge(data))}
+  let markdownText = `${titleSection(data, renderLicenseBadge(data))}\n## Description\n${description}\n## Table of Contents\n${generateTable(data)}`;
 
-## Descritption
-${data.description}
+  if(install) {
+    markdownText = markdownText + `\n${installSection(data)}`;
+  }
 
-## Table of Contents
-${generateTable(data)}
+  if(usage) {
+    markdownText = markdownText + `\n${usageSection(data)}`;
+  }
 
-${installSection(data)}
+  if(credits) {
+    markdownText = markdownText + `\n${creditsSection(data)}`;
+  }
 
-${usageSection(data)}
+  if(sources) {
+    markdownText = markdownText + `\n${additionalSources(data)}`;
+  }
 
-${creditsSection(data)}
-${additionalSources(data)}
+  if(license) {
+    markdownText = markdownText + `\n${licenseSection(data)}`;
+  }
 
-${licenseSection(data)}
+  markdownText = markdownText + `\n${contributingSection(data)}`;
 
-${contributingSection(data)}
+  if(tests) {
+    markdownText = markdownText + `\n${testSection(data)}`;
+  }
 
-${testSection(data)}
+  markdownText = markdownText + `\n${questionsSection(data)}`;
 
-${questionsSection(data)}
-`;
+  return markdownText;
 };
 
 module.exports = markdownContent;

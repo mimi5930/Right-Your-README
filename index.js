@@ -121,8 +121,8 @@ const initialQuestions = () => {
                     return false;
                 }
             },
-            validate: titleInput => {
-                if (titleInput) {
+            validate: contributeInput => {
+                if (contributeInput) {
                     return true
                 } else {
                     console.log('Please add a message for contributing to your project!');
