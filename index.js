@@ -68,7 +68,6 @@ const initialQuestions = () => {
             message: 'Instruct the user on how to use your product.'
         },
         {
-            // TODO: Add badges
             type: 'list',
             name: 'license',
             message: 'Which license would you like to use?',
@@ -148,9 +147,9 @@ Please answer the following questions fully to create a glowing README of your o
 init();
 initialQuestions()
 .then(data => {
-    console.log(data);
     return markdownContent(data);
 })
 .then(markdownContent => {
     return createMarkdown(markdownContent);
-});
+})
+.catch(err => console.log(err));

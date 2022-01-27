@@ -1,10 +1,26 @@
-const listMaker = (string) => {
+const listMaker = string => {
     let text = string;
     var textArr = text.split('*');
     let arrLength = textArr.length;
     var list = '';
     for (i = 0; i < arrLength; i++) {
       let stepText = textArr[i].trim()
+      let newLine = '\n';
+      let bullet = '- ';
+      stepText = bullet + stepText + newLine;
+      list = list += stepText;
+    }
+    return list;
+}
+
+const listAndLinkMaker = string => {
+  let text = string;
+    var textArr = text.split('*');
+    let arrLength = textArr.length;
+    var list = '';
+    for (i = 0; i < arrLength; i++) {
+      let stepText = textArr[i].trim()
+      stepText = `[${stepText}](https://github.com/${stepText})`;
       let newLine = '\n';
       let bullet = '- ';
       stepText = bullet + stepText + newLine;
@@ -52,14 +68,13 @@ const usageSection = data => {
   }
 };
 
-// TODO: Add github User links with input data
 const creditsSection = data => {
   let { credits } = data;
   if (credits) {
     if (credits.includes('*')) {
-      credits = listMaker(credits);
+      credits = listAndLinkMaker(credits);
     }
-    return `## Credits\n${credits}\n`;
+    return `## Credits\nAdditional contributors for this project:\n${credits}`;
   }
   else {
     return '';
@@ -137,7 +152,7 @@ const contributingSection = data => {
   let { confirmContributing, contributeOptions, customContribute } = data;
   if (confirmContributing) {
     if (contributeOptions) {
-      return `## Contributing\n- [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)`;
+      return `## Contributing\nFor information about contributing to this project, please read through this agreement.\n- [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)`;
     }
     else {
       if (customContribute.includes('*')) {
@@ -153,10 +168,7 @@ const contributingSection = data => {
 // Questions Section
 const questionsSection = data => {
   let { email, gitName } = data;
-  let content = `
-  ## Questions
-  To reach out with any questions, please go to my [GitHub](https://github.com/${gitName}) page or email me at ${email}.
-  `
+  let content = `## Questions\nTo reach out with any questions, please go to my [GitHub](https://github.com/${gitName}) page or email me at ${email}`
   return content;
 }
 
