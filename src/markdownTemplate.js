@@ -44,97 +44,71 @@ const titleSection = (data, badge) => {
 
 const installSection = data => {
   var { install } = data;
-  if (install) {
-    if (install.includes('*')) {
-      install = listMaker(install);
-    }
-    return `## Installation\n${install}`;
+  if (install.includes('*')) {
+    install = listMaker(install);
   }
-  else {
-    return '';
-  }
+  return `## Installation\n${install}`;
 };
 
 const usageSection = data => {
   var { usage } = data;
-  if (usage) {
     if (usage.includes('*')) {
       usage = listMaker(usage);
     }
     return`## Usage\n${usage}`;
-  }
-  else {
-    return '';
-  }
 };
 
 const creditsSection = data => {
   let { credits } = data;
-  if (credits) {
     if (credits.includes('*')) {
       credits = listAndLinkMaker(credits);
     }
+    
     return `## Credits\nAdditional contributors for this project:\n${credits}`;
-  }
-  else {
-    return '';
-  }
 };
 
 const additionalSources = data => {
   let { sources } = data;
-  if (sources) {
-    if (sources.includes('*')) {
-      sources = listMaker(sources);
-    }
-    return `### Additional Sources\n${sources}`;
+  if (sources.includes('*')) {
+    sources = listMaker(sources);
   }
-  else {
-    return '';
-  }
+  return `### Additional Sources\n${sources}`;
 }
 
 // add license Section
 const licenseSection = data => {
   let { license } = data;
-  if (license) {
-    if(license === 'none') {
-      return '';
-    }
+    
+  if(license === 'none') {
+    return '';
+  }
 
-    let link = '';
+  let link = '';
 
-    switch (license) {
-      case 'MIT License':
-        link = 'https://choosealicense.com/licenses/mit/';
-        break;
-      case 'GNU GPLv3 License':
-        link = 'https://choosealicense.com/licenses/gpl-3.0/';
-        break;
-      case 'Apache License 2.0':
-        link = 'https://choosealicense.com/licenses/apache-2.0/';
-        break;
-      case 'ISC License':
-        link = 'https://choosealicense.com/licenses/isc/';
-        break;
+  switch (license) {
+    case 'MIT License':
+      link = 'https://choosealicense.com/licenses/mit/';
+      break;
+    case 'GNU GPLv3 License':
+      link = 'https://choosealicense.com/licenses/gpl-3.0/';
+      break;
+    case 'Apache License 2.0':
+      link = 'https://choosealicense.com/licenses/apache-2.0/';
+      break;
+    case 'ISC License':
+      link = 'https://choosealicense.com/licenses/isc/';
+      break;
     }
 
    return `## License\nLicensed under the [${license}](${link}).`
-  }
 }
 
 // Test Section
 const testSection = data => {
-  let { tests } = data;
-  if (tests) {
-    if (tests.includes('*')) {
-      tests = listMaker(tests);
-    }
-    return `## Test\n${tests}`;
+  if (tests.includes('*')) {
+    tests = listMaker(tests);
   }
-  else {
-    return '';
-  }
+  return `## Test\n${tests}`;
 }
 
 // If there is no license, return an empty string
@@ -214,35 +188,26 @@ var markdownContent = data => {
   let { description, install, usage, credits, sources, license, tests } = data;
 
   let markdownText = `${titleSection(data, renderLicenseBadge(data))}\n## Description\n${description}\n## Table of Contents\n${generateTable(data)}`;
-
   if(install) {
     markdownText = markdownText + `\n${installSection(data)}`;
   }
-
   if(usage) {
     markdownText = markdownText + `\n${usageSection(data)}`;
   }
-
   if(credits) {
     markdownText = markdownText + `\n${creditsSection(data)}`;
   }
-
   if(sources) {
     markdownText = markdownText + `\n${additionalSources(data)}`;
   }
-
   if(license) {
     markdownText = markdownText + `\n${licenseSection(data)}`;
   }
-
   markdownText = markdownText + `\n${contributingSection(data)}`;
-
   if(tests) {
     markdownText = markdownText + `\n${testSection(data)}`;
   }
-
   markdownText = markdownText + `\n${questionsSection(data)}`;
-
   return markdownText;
 };
 
