@@ -136,7 +136,7 @@ const initialQuestions = () => {
 function init() {
     console.log(`
 ====================================================================================
-Welcome to Write Your README!
+Welcome to Right Your README!
 A README is the gateway into the soul of your project.
 Please answer the following questions fully to create a glowing README of your own!
 ====================================================================================

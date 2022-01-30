@@ -105,6 +105,7 @@ const licenseSection = data => {
 
 // Test Section
 const testSection = data => {
+  let { tests } = data;
   if (tests.includes('*')) {
     tests = listMaker(tests);
   }
