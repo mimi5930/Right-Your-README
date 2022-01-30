@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+//  generate README.md file in dist folder
 const createMarkdown = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/README.md', fileContent, err => {

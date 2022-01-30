@@ -1,34 +1,28 @@
+// separate string into a list
 const listMaker = string => {
-    let text = string;
-    var textArr = text.split('*');
-    let arrLength = textArr.length;
+    var textArr = string.split('*');
     var list = '';
-    for (i = 0; i < arrLength; i++) {
-      let stepText = textArr[i].trim()
-      let newLine = '\n';
-      let bullet = '- ';
-      stepText = bullet + stepText + newLine;
+    for (i = 0; i < textArr.length; i++) {
+      let stepText = textArr[i].trim();
+      stepText = `- ${stepText}\n`;
       list = list += stepText;
     }
     return list;
 }
 
+// separate string into list with links to github profiles
 const listAndLinkMaker = string => {
-  let text = string;
-    var textArr = text.split('*');
-    let arrLength = textArr.length;
-    var list = '';
-    for (i = 0; i < arrLength; i++) {
-      let stepText = textArr[i].trim()
-      stepText = `[${stepText}](https://github.com/${stepText})`;
-      let newLine = '\n';
-      let bullet = '- ';
-      stepText = bullet + stepText + newLine;
-      list = list += stepText;
-    }
-    return list;
+  var textArr = string.split('*');
+  var list = '';
+  for (i = 0; i < textArr.length; i++) {
+    let stepText = textArr[i].trim()
+    stepText = `- [${stepText}](https://github.com/${stepText})\n`
+    list = list += stepText;
+  }
+  return list;
 }
 
+// capitalize first letter in title
 const titleSection = (data, badge) => {
   let { title } = data;
   
@@ -41,7 +35,7 @@ const titleSection = (data, badge) => {
   return `# ${title}\n${badge}`;
 }
 
-
+//  install section
 const installSection = data => {
   var { install } = data;
   if (install.includes('*')) {
@@ -50,6 +44,7 @@ const installSection = data => {
   return `## Installation\n${install}`;
 };
 
+// usage section
 const usageSection = data => {
   var { usage } = data;
     if (usage.includes('*')) {
@@ -58,6 +53,7 @@ const usageSection = data => {
     return`## Usage\n${usage}`;
 };
 
+// add credits
 const creditsSection = data => {
   let { credits } = data;
     if (credits.includes('*')) {
@@ -67,6 +63,7 @@ const creditsSection = data => {
     return `## Credits\nAdditional contributors for this project:\n${credits}`;
 };
 
+// add additional sources
 const additionalSources = data => {
   let { sources } = data;
   if (sources.includes('*')) {
@@ -75,7 +72,7 @@ const additionalSources = data => {
   return `### Additional Sources\n${sources}`;
 }
 
-// add license Section
+// add license
 const licenseSection = data => {
   let { license } = data;
     

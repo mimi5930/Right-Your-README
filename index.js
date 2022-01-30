@@ -152,4 +152,7 @@ initialQuestions()
 .then(markdownContent => {
     return createMarkdown(markdownContent);
 })
+.then(response => {
+    console.log(response.message);
+})
 .catch(err => console.log(err));
