@@ -19,6 +19,7 @@ Right Your README is an input-based README.md file generator for any project. It
 
 ## Usage 
 Once a project has been created, run the application in a terminal and follow the prompts that are provided. Leaving a section blank will exclude it from the produced README.md file. Once the questions have been fulfilled, locate the generated README.md in the dist/ folder.
+Here is a [video](https://watch.screencastify.com/v/7gNqR1Rj1nK1Veak8gJs) of the typical user experience.
 
 ## Credits
 - this project uses [Inquirer](https://github.com/SBoudrias/Inquirer.js#readme) to accept user input through the command line.
